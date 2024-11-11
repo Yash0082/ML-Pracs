@@ -55,17 +55,6 @@ def run(episodes, is_training=True, render=False):
 
     env.close()
 
-    sum_rewards = np.zeros(episodes)
-    for t in range(episodes):
-        sum_rewards[t] = np.sum(rewards_per_episode[max(0, t-100):(t+1)])
-    plt.plot(sum_rewards)
-    plt.savefig('taxi.png')
-
-    if is_training:
-        f = open("taxi.pkl","wb")
-        pickle.dump(q, f)
-        f.close()
-
 if __name__ == '__main__':
     run(15000)
 
